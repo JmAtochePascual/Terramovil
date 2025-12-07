@@ -1,7 +1,24 @@
 @import 'tailwindcss';
 
-/* @theme {
-  --color-primary: #121063;
-  --color-secondary: #3ab7bf;
-  --color-bermuda: #78dcca;
-} */
+@theme {
+	--color-white: #fff;
+	--color-black: #171717;
+	--color-primary: #ff0000;
+	--max-width-container: 1200px;
+
+	--font-sans: 'Roboto', sans-serif;
+	--font-weight-bold: 700;
+}
+
+@layer base {
+	h1,
+	h2,
+	h3 {
+		font-weight: bold;
+		line-height: 1.2 !important;
+	}
+
+	p {
+		line-height: 1.5 !important;
+	}
+}

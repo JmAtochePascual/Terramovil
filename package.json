@@ -10,6 +10,7 @@
 		"prettier": "pnpm exec prettier . --write"
 	},
 	"dependencies": {
+		"@fontsource/roboto": "5.2.9",
 		"@tailwindcss/vite": "4.1.17",
 		"astro": "5.16.4",
 		"tailwindcss": "4.1.17"

@@ -3,6 +3,8 @@
 	"singleQuote": true,
 	"tabWidth": 2,
 	"useTabs": true,
+	"printWidth": 120,
+	"bracketSameLine": true,
 	"plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
 	"overrides": [
 		{

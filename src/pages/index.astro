@@ -1,13 +1,17 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import homeBanner from '../assets/img/hero_home.jpg';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Header />
-	<Welcome />
+<Layout title="Terremóvil">
+	<Hero
+		title="Conectamos tus emociones"
+		span="con tu destino"
+		description="Viaja seguro y cómodo hacia el Norte y Huancayo. Disfruta de una flota moderna con los más altos estándares de calidad."
+		backgroundImage={homeBanner}
+	/>
 </Layout>

@@ -1,17 +1,26 @@
-<header class="bg-red-600 py-6">
-	<div class="mx-auto flex w-11/12 max-w-7xl items-center justify-between">
-		<h1>Terremóvil</h1>
-		<nav class="flex gap-6">
-			<a
-				href="./"
-				class="block border-b-2 border-white p-2 text-lg font-bold text-white"
-				>Inicio</a
-			>
-			<a href="./servicios" class="block p-2 text-lg text-white">Servicios</a>
-			<a href="./destinos" class="block p-2 text-lg text-white">Destinos</a>
-			<a href="./terminales" class="block p-2 text-lg text-white">Terminales</a>
-			<a href="./nosotros" class="block p-2 text-lg text-white">Nosotros</a>
-			<a href="./contacto" class="block p-2 text-lg text-white">Contacto</a>
+---
+import { Image } from 'astro:assets';
+import menuIcon from '../assets/icons/menu-logo.svg';
+import logo from '../assets/img/terramovil_logo.png';
+---
+
+<header class="bg-primary py-6">
+	<div class="max-w-container mx-auto flex w-[95%] items-center justify-between">
+		<a href="/" class="cursor-pointer">
+			<Image src={logo} alt="Logo" width={300} height={27} class="w-[200px] lg:w-[300px]" />
+		</a>
+
+		<nav class="hidden items-center md:flex lg:gap-6">
+			<a href="./" class="block border-b-2 border-white p-2 text-lg font-bold text-white">Inicio</a>
+			<a href="./servicios" class="block p-2 text-white lg:text-lg">Servicios</a>
+			<a href="./destinos" class="block p-2 text-white lg:text-lg">Destinos</a>
+			<a href="./terminales" class="block p-2 text-white lg:text-lg">Terminales</a>
+			<a href="./nosotros" class="block p-2 text-white lg:text-lg">Nosotros</a>
+			<a href="./contacto" class="block p-2 text-white lg:text-lg">Contacto</a>
 		</nav>
+
+		<button class="md:hidden">
+			<Image src={menuIcon} alt="Abrir Menú" width={24} height={24} />
+		</button>
 	</div>
 </header>
