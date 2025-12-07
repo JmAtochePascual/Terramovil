@@ -1,28 +1,45 @@
 ---
-import type { ImageMetadata } from 'astro';
+import { HERO_DATA } from '../data/hero-data';
 
 interface Props {
-	title: string;
-	span: string;
-	description: string;
-	backgroundImage: ImageMetadata;
+	page: keyof typeof HERO_DATA;
+	class?: string;
 }
 
-const { title, span, description, backgroundImage } = Astro.props;
+const { page, class: className } = Astro.props;
+
+const data = HERO_DATA[page];
+
+if (!data) {
+	throw new Error(`No se encontró información del Hero para la página: ${page}`);
+}
+
+const { title, span, description, backgroundImage } = data;
+
+const hasContent = title || description;
 ---
 
 <section
-	class="relative w-full bg-cover bg-center bg-no-repeat py-36 md:py-44"
+	class:list={['relative w-full bg-cover bg-center bg-no-repeat', 'py-36 md:py-44', className]}
 	style={`background-image: url(${backgroundImage.src})`}>
-	<div class="absolute inset-0 z-0 bg-linear-to-r from-[#000]/60 to-transparent"></div>
+	{/* Overlay condicional */}
+	{hasContent && <div class="absolute inset-0 z-0 bg-linear-to-r from-[#000]/60 to-transparent" />}
 
-	<div class="max-w-container relative z-10 mx-auto w-11/12">
-		<div class="flex max-w-[684px] flex-col gap-4">
-			<h1 class="max-w-[600px] text-4xl text-white uppercase md:text-7xl lg:text-7xl">
-				{title}
-				<span class="text-primary">{span}</span>
-			</h1>
-			<p class="max-w-[540px] text-white">{description}</p>
-		</div>
-	</div>
+	{/* Contenido condicional */}
+	{
+		hasContent && (
+			<div class="max-w-container relative z-10 mx-auto w-11/12">
+				<div class="flex max-w-[684px] flex-col gap-4">
+					{title && (
+						<h1 class="max-w-[600px] text-4xl text-white uppercase md:text-7xl lg:text-7xl">
+							{title}
+							{span && <span class="text-primary"> {span}</span>}
+						</h1>
+					)}
+
+					{description && <p class="max-w-[540px] text-white">{description}</p>}
+				</div>
+			</div>
+		)
+	}
 </section>
