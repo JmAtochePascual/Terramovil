@@ -3,10 +3,9 @@ import { HERO_DATA } from '../data/hero-data';
 
 interface Props {
 	page: keyof typeof HERO_DATA;
-	class?: string;
 }
 
-const { page, class: className } = Astro.props;
+const { page } = Astro.props;
 
 const data = HERO_DATA[page];
 
@@ -20,12 +19,12 @@ const hasContent = title || description;
 ---
 
 <section
-	class:list={['relative w-full bg-cover bg-center bg-no-repeat', 'py-36 md:py-44', className]}
+	class="relative w-full bg-cover bg-center bg-no-repeat py-3 md:flex md:h-[684px] md:items-center md:py-0"
 	style={`background-image: url(${backgroundImage.src})`}>
-	{/* Overlay condicional */}
+	{/* Overlay: Solo si hay texto */}
 	{hasContent && <div class="absolute inset-0 z-0 bg-linear-to-r from-[#000]/60 to-transparent" />}
 
-	{/* Contenido condicional */}
+	{/* Contenido: Solo si hay texto */}
 	{
 		hasContent && (
 			<div class="max-w-container relative z-10 mx-auto w-11/12">

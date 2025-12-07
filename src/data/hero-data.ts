@@ -1,6 +1,7 @@
 import type { ImageMetadata } from 'astro';
 
-import heroHome from '../assets/img/hero_home.jpg';
+import bgHeroHome from '../assets/img/hero_home.jpg';
+import bgHeroServicios from '../assets/img/hero_servicios.jpg';
 
 interface HeroContent {
 	title?: string;
@@ -15,6 +16,11 @@ export const HERO_DATA: Record<string, HeroContent> = {
 		span: 'CON TU DESTINO',
 		description:
 			'Viaja seguro y cómodo hacia el Norte y Huancayo. Disfruta de una flota moderna con los más altos estándares de calidad.',
-		backgroundImage: heroHome,
+		backgroundImage: bgHeroHome,
+	},
+	servicios: {
+		title: 'Elige tu Mejor Experiencia de',
+		span: 'Viaje',
+		backgroundImage: bgHeroServicios,
 	},
 };
