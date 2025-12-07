@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+
+import bgFooter from '../assets/img/bg_footer.jpg';
+import logo from '../assets/img/terramovil_logo-footer.png';
+import facebookIcon from '../assets/icons/facebook_icon.svg';
+import instagramIcon from '../assets/icons/instagram_icon.svg';
+import whatsappIcon from '../assets/icons/whatsapp_icon.svg';
+
+import { SITE_INFO, NAV_LINKS, LEGAL_LINKS, SOCIAL_LINKS } from '../data/site-info';
+
+const iconMap: Record<string, ImageMetadata> = {
+	facebook: facebookIcon,
+	instagram: instagramIcon,
+	whatsapp: whatsappIcon,
+};
+
+const currentYear = new Date().getFullYear();
+const currentPath = Astro.url.pathname;
+console.log('Current Path:', currentPath);
+---
+
+<footer
+	class="relative w-full bg-cover bg-center bg-no-repeat py-20 text-white"
+	style={`background-image: url(${bgFooter.src})`}>
+	<div class="bg-primary/84 absolute inset-0 z-0"></div>
+
+	<div class="max-w-container relative z-10 mx-auto flex w-[95%] flex-col gap-10">
+		<div class="grid gap-6 md:grid-cols-[2fr_1fr] md:justify-between">
+			<div class="flex flex-col gap-8">
+				<a href="/" class="cursor-pointer">
+					<Image src={logo} alt="Logo Terramovil" width={200} height={92} class="h-[92px] w-[200px]" />
+				</a>
+
+				<div class="flex flex-col gap-1">
+					<h3 class="font-bold">Dirección</h3>
+					<p class="text-sm">{SITE_INFO.address}</p>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<h3 class="font-bold">Contacto</h3>
+					<address class="flex flex-col gap-2 not-italic">
+						<p class="text-sm">
+							Lima: <a href={`tel:+51${SITE_INFO.phones.lima.replace(/\s/g, '')}`} class="hover:underline">
+								{SITE_INFO.phones.lima}
+							</a>
+						</p>
+						<p class="text-sm">
+							Piura: <a href={`tel:+51${SITE_INFO.phones.piura.replace(/\s/g, '')}`} class="hover:underline">
+								{SITE_INFO.phones.piura}
+							</a>
+						</p>
+						<p class="text-sm">{SITE_INFO.email}</p>
+					</address>
+				</div>
+
+				<div class="flex gap-4">
+					{
+						SOCIAL_LINKS.map((social) => (
+							<a
+								href={social.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Visítanos en ${social.name}`}
+								class="transition-transform hover:scale-110">
+								<Image src={iconMap[social.iconKey]} alt={social.name} width={24} height={24} />
+							</a>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-6 md:flex-row">
+				<nav class="flex flex-col gap-1 md:w-full">
+					{
+						NAV_LINKS.map((link) => {
+							const isActive =
+								link.href === '/' ? currentPath === '/' : currentPath.startsWith(link.href.replace('.', ''));
+
+							return (
+								<a
+									href={link.href}
+									class:list={[
+										'block p-2 text-sm transition-colors',
+										isActive
+											? 'border-b border-white/80 hover:border-b-white'
+											: 'border-b border-b-transparent hover:border-b-white/50',
+									]}>
+									{link.label}
+								</a>
+							);
+						})
+					}
+				</nav>
+
+				<nav class="flex flex-col gap-1 md:w-full">
+					{
+						LEGAL_LINKS.map((link) => (
+							<a
+								href={link.href}
+								class="border-b border-b-transparent p-2 text-sm transition-colors hover:border-b-white/50">
+								{link.label}
+							</a>
+						))
+					}
+				</nav>
+			</div>
+		</div>
+
+		<div
+			class="flex flex-col gap-8 border-t border-white/20 pt-6 lg:flex-row-reverse lg:items-center lg:justify-between">
+			<div class="flex flex-col gap-4 md:flex-row md:justify-center">
+				<a href="/privacidad" class="text-sm hover:underline">Política de privacidad</a>
+				<a href="/terminos" class="text-sm hover:underline">Términos de servicio</a>
+				<a href="#" class="text-sm hover:underline">Configuración de cookies</a>
+				<a href={SITE_INFO.bookComplaintUrl} class="text-sm hover:underline">Libro de Reclamaciones</a>
+			</div>
+			<p class="text-center text-sm">
+				© {currentYear} Terramovil. Todos los derechos reservados.
+			</p>
+		</div>
+	</div>
+</footer>
