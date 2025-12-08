@@ -2,15 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
+import Stats from '../components/Stats.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Terremóvil">
 	<Hero page="home" />
 
-	<section class="py-32 lg:pt-[180px]">
+	<section class="pt-32 pb-20 lg:pt-[180px]">
 		<Features page="home" reversed={true} />
 	</section>
+
+	<Stats />
 
 	<Footer />
 </Layout>
