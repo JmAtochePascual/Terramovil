@@ -1,0 +1,52 @@
+---
+import { DESTINATIONS_DATA } from '../data/destinations-data';
+import DestinationCard from './DestinationCard.astro';
+
+interface Props {
+	limit?: number;
+	showButton?: boolean;
+	title?: string;
+}
+
+const { limit, showButton = false, title = 'Unimos tus Destinos Principales' } = Astro.props;
+
+const destinations = limit ? DESTINATIONS_DATA.slice(0, limit) : DESTINATIONS_DATA;
+---
+
+<div class="max-w-container mx-auto w-[95%]">
+	<div class="mb-12 text-center">
+		<span class="text-primary text-lg font-bold tracking-wider">Cobertura Nacional</span>
+		<h2 class="mt-2 text-3xl font-bold text-gray-900 md:text-5xl">
+			{title}
+		</h2>
+		<p class="mx-auto mt-4 max-w-2xl text-gray-600">
+			Brindamos servicio de transporte terrestre conectando Lima con las principales ciudades del Norte y Centro del
+			país.
+		</p>
+	</div>
+
+	<div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
+		{destinations.map((item) => <DestinationCard {...item} />)}
+	</div>
+
+	{
+		showButton && (
+			<div class="mt-12 text-center">
+				<a
+					href="/destinos"
+					class="text-primary inline-flex items-center gap-2 font-bold transition-colors hover:text-red-700 hover:underline">
+					Ver todos los destinos
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="2"
+						stroke="currentColor"
+						class="h-4 w-4">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+					</svg>
+				</a>
+			</div>
+		)
+	}
+</div>
