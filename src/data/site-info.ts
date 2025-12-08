@@ -25,7 +25,6 @@ export const LEGAL_LINKS = [
 	{ label: 'TC - Prensa', href: '/' },
 ];
 
-// Usamos 'iconKey' para mapear el SVG en el componente
 export const SOCIAL_LINKS = [
 	{ name: 'Facebook', href: 'https://www.facebook.com/TerramovilPeru/?locale=es_LA', iconKey: 'facebook' },
 	{ name: 'Instagram', href: 'https://www.instagram.com/terramovilperu/', iconKey: 'instagram' },

@@ -19,12 +19,10 @@ const hasContent = title || description;
 ---
 
 <section
-	class="relative w-full bg-cover bg-center bg-no-repeat py-3 md:flex md:h-[684px] md:items-center md:py-0"
+	class="relative flex h-[400px] w-full items-center bg-cover bg-center bg-no-repeat md:h-[684px]"
 	style={`background-image: url(${backgroundImage.src})`}>
-	{/* Overlay: Solo si hay texto */}
 	{hasContent && <div class="absolute inset-0 z-0 bg-linear-to-r from-[#000]/60 to-transparent" />}
 
-	{/* Contenido: Solo si hay texto */}
 	{
 		hasContent && (
 			<div class="max-w-container relative z-10 mx-auto w-11/12">

@@ -2,6 +2,7 @@ import type { ImageMetadata } from 'astro';
 
 import bgHeroHome from '../assets/img/hero_home.jpg';
 import bgHeroServicios from '../assets/img/hero_servicios.jpg';
+import bgHeroDestinos from '../assets/img/hero_destinos.jpg';
 
 interface HeroContent {
 	title?: string;
@@ -22,5 +23,10 @@ export const HERO_DATA: Record<string, HeroContent> = {
 		title: 'Elige tu Mejor Experiencia de',
 		span: 'Viaje',
 		backgroundImage: bgHeroServicios,
+	},
+	destinos: {
+		title: 'Nuestra Red de Destinos',
+		span: 'terramovil',
+		backgroundImage: bgHeroDestinos,
 	},
 };

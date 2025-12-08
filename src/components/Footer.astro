@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-import bgFooter from '../assets/img/bg_footer.jpg';
+import background from '../assets/img/bg_footer.jpg';
 import logo from '../assets/img/terramovil_logo-footer.png';
 import facebookIcon from '../assets/icons/facebook_icon.svg';
 import instagramIcon from '../assets/icons/instagram_icon.svg';
@@ -17,12 +17,11 @@ const iconMap: Record<string, ImageMetadata> = {
 
 const currentYear = new Date().getFullYear();
 const currentPath = Astro.url.pathname;
-console.log('Current Path:', currentPath);
 ---
 
 <footer
 	class="relative w-full bg-cover bg-center bg-no-repeat py-20 text-white"
-	style={`background-image: url(${bgFooter.src})`}>
+	style={`background-image: url(${background.src})`}>
 	<div class="bg-primary/84 absolute inset-0 z-0"></div>
 
 	<div class="max-w-container relative z-10 mx-auto flex w-[95%] flex-col gap-10">
@@ -80,12 +79,11 @@ console.log('Current Path:', currentPath);
 							return (
 								<a
 									href={link.href}
-									class:list={[
-										'block p-2 text-sm transition-colors',
+									class={`block p-2 text-sm transition-colors ${
 										isActive
 											? 'border-b border-white/80 hover:border-b-white'
-											: 'border-b border-b-transparent hover:border-b-white/50',
-									]}>
+											: 'border-b border-b-transparent hover:border-b-white/50'
+									}`}>
 									{link.label}
 								</a>
 							);
@@ -112,7 +110,6 @@ console.log('Current Path:', currentPath);
 			<div class="flex flex-col gap-4 md:flex-row md:justify-center">
 				<a href="/privacidad" class="text-sm hover:underline">Política de privacidad</a>
 				<a href="/terminos" class="text-sm hover:underline">Términos de servicio</a>
-				<a href="#" class="text-sm hover:underline">Configuración de cookies</a>
 				<a href={SITE_INFO.bookComplaintUrl} class="text-sm hover:underline">Libro de Reclamaciones</a>
 			</div>
 			<p class="text-center text-sm">

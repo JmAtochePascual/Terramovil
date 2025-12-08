@@ -24,10 +24,7 @@ const currentPath = Astro.url.pathname;
 					return (
 						<a
 							href={link.href}
-							class:list={[
-								'block p-2 text-white transition-colors lg:text-lg',
-								isActive ? 'border-b-2 border-white font-bold' : 'border-b-2 border-transparent hover:text-white/90',
-							]}>
+							class={`block border-b-2 border-transparent p-2 text-white transition-colors hover:text-white/90 lg:text-lg ${isActive ? 'border-b-2 border-white font-bold' : 'border-b-2 border-transparent hover:text-white/90'}`}>
 							{link.label}
 						</a>
 					);
