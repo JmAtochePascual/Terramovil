@@ -14,9 +14,9 @@ const destinations = limit ? DESTINATIONS_DATA.slice(0, limit) : DESTINATIONS_DA
 ---
 
 <div class="max-w-container mx-auto w-[95%]">
-	<div class="mb-12 text-center">
+	<div class="mx-auto mb-12 max-w-xl text-center md:mb-16 lg:mb-20">
 		<span class="text-primary text-lg font-bold tracking-wider">Cobertura Nacional</span>
-		<h2 class="mt-2 text-3xl font-bold text-gray-900 md:text-5xl">
+		<h2 class="mx-auto mt-2 text-3xl font-bold text-gray-900 md:text-5xl">
 			{title}
 		</h2>
 		<p class="mx-auto mt-4 max-w-2xl text-gray-600">
@@ -33,7 +33,7 @@ const destinations = limit ? DESTINATIONS_DATA.slice(0, limit) : DESTINATIONS_DA
 		showButton && (
 			<div class="mt-12 text-center">
 				<a
-					href="/destinos"
+					href="./destinos"
 					class="text-primary inline-flex items-center gap-2 font-bold transition-colors hover:text-red-700 hover:underline">
 					Ver todos los destinos
 					<svg

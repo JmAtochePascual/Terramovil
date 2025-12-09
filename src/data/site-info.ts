@@ -9,7 +9,7 @@ export const SITE_INFO = {
 };
 
 export const NAV_LINKS = [
-	{ label: 'Inicio', href: '/' },
+	{ label: 'Inicio', href: './' },
 	{ label: 'Servicios', href: './servicios' },
 	{ label: 'Destinos', href: './destinos' },
 	{ label: 'Terminales', href: './terminales' },
@@ -20,9 +20,9 @@ export const NAV_LINKS = [
 export const LEGAL_LINKS = [
 	{ label: 'TC - Pasajes', href: 'https://terramovil.bus.net.pe/terminos-pasajes' },
 	{ label: 'TC - Encomiendas', href: 'https://terramovil.bus.net.pe/terminos-encomiendas' },
-	{ label: 'TC - Promociones', href: '/' },
-	{ label: 'TC - Blog', href: '/' },
-	{ label: 'TC - Prensa', href: '/' },
+	{ label: 'TC - Promociones', href: './' },
+	{ label: 'TC - Blog', href: './' },
+	{ label: 'TC - Prensa', href: './' },
 ];
 
 export const SOCIAL_LINKS = [
