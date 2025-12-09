@@ -1,0 +1,439 @@
+---
+import { CITIES } from '../data/form-data';
+
+// Icono de Swap (Flechas)
+const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>`;
+---
+
+<div class="max-w-container relative z-20 mx-auto -mt-16 w-[95%] rounded-xl bg-white p-6 shadow-2xl lg:-mt-20">
+	<div
+		id="form-toast"
+		class="fixed top-5 right-5 z-50 hidden max-w-sm rounded-lg p-4 text-sm font-bold text-white shadow-lg transition-opacity duration-300">
+	</div>
+
+	<form id="ticket-form" class="animate-fade-in flex flex-col gap-6" novalidate>
+		<div class="flex flex-col justify-between gap-4 border-b border-gray-100 pb-4 md:flex-row md:items-center">
+			<div class="flex items-center gap-6">
+				<label class="group flex cursor-pointer items-center gap-2">
+					<input type="radio" name="tripType" value="roundtrip" checked class="peer sr-only" id="radio-roundtrip" />
+					<span
+						class="peer-checked:border-primary h-5 w-5 rounded-full border-2 border-gray-300 bg-white transition-all peer-checked:border-[5px]">
+					</span>
+					<span
+						class="group-hover:text-primary text-sm font-medium text-gray-600 transition-colors peer-checked:text-black">
+						Ida y vuelta
+					</span>
+				</label>
+
+				<label class="group flex cursor-pointer items-center gap-2">
+					<input type="radio" name="tripType" value="oneway" class="peer sr-only" id="radio-oneway" />
+					<span
+						class="peer-checked:border-primary h-5 w-5 rounded-full border-2 border-gray-300 bg-white transition-all peer-checked:border-[5px]">
+					</span>
+					<span
+						class="group-hover:text-primary text-sm font-medium text-gray-600 transition-colors peer-checked:text-black">
+						Solo ida
+					</span>
+				</label>
+			</div>
+
+			<button
+				type="button"
+				id="btn-to-cargo"
+				class="text-primary flex items-center gap-1 text-sm font-bold hover:underline">
+				Consultar Encomienda <span class="text-lg">&rsaquo;</span>
+			</button>
+		</div>
+
+		<div class="relative flex flex-col items-end gap-4 md:grid md:grid-cols-2 lg:flex lg:flex-row lg:gap-2">
+			<div class="w-full">
+				<label for="origin-select" class="mb-1 ml-1 block text-xs text-gray-400">Origen</label>
+				<div class="relative">
+					<select
+						id="origin-select"
+						name="origin"
+						required
+						class="form-input focus:border-primary focus:ring-primary w-full appearance-none truncate rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black/60 transition-colors outline-none">
+						<option value="" disabled selected>Seleccione</option>
+						{
+							CITIES.map((city) => (
+								<option value={city} class="text-black">
+									{city}
+								</option>
+							))
+						}
+					</select>
+
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black/60">
+						<svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+							<path
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z">
+							</path>
+						</svg>
+					</div>
+
+					<div
+						class="absolute right-[calc(50%-20px)] -bottom-3 z-10 -my-6 flex rotate-90 justify-center self-center md:-top-3 md:-right-6 md:rotate-0">
+						<button
+							type="button"
+							id="btn-swap"
+							class="text-primary cursor-pointer rounded-full border border-gray-200 bg-white p-2 shadow-md transition-transform hover:rotate-180 hover:bg-gray-50 hover:shadow-lg active:scale-95"
+							aria-label="Intercambiar origen y destino">
+							<fragment set:html={swapIcon} />
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-full">
+				<label for="destination-select" class="mb-1 ml-1 block text-xs text-gray-400">Destino</label>
+				<div class="relative">
+					<select
+						id="destination-select"
+						name="destination"
+						required
+						class="form-input focus:border-primary focus:ring-primary w-full appearance-none truncate rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black/60 transition-colors outline-none">
+						<option value="" disabled selected>Seleccione</option>
+						{
+							CITIES.map((city) => (
+								<option value={city} class="text-black">
+									{city}
+								</option>
+							))
+						}
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+						<svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+							<path
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z">
+							</path>
+						</svg>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-full transition-all duration-300">
+				<label for="departure-date" class="mb-1 ml-1 block text-xs text-gray-400">Fecha de ida</label>
+				<div class="relative">
+					<input
+						type="date"
+						name="departureDate"
+						id="departure-date"
+						required
+						class="form-input focus:border-primary focus:ring-primary w-full truncate rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black/60 transition-colors outline-none"
+					/>
+				</div>
+			</div>
+
+			<div id="return-date-container" class="w-full overflow-hidden transition-all duration-300 ease-in-out">
+				<label for="return-date" class="mb-1 ml-1 block text-xs whitespace-nowrap text-gray-400">Fecha de vuelta</label>
+				<div class="relative">
+					<input
+						type="date"
+						name="returnDate"
+						id="return-date"
+						required
+						class="form-input focus:border-primary focus:ring-primary w-full truncate rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black/60 transition-colors outline-none"
+					/>
+				</div>
+			</div>
+
+			<div class="w-full transition-all duration-300">
+				<label for="passengers" class="mb-1 ml-1 block text-xs text-gray-400">Pasajeros</label>
+				<div class="relative">
+					<select
+						name="passengers"
+						id="passengers"
+						class="form-input focus:border-primary focus:ring-primary w-full appearance-none rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-black/60 transition-colors outline-none">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+						<svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+							<path
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z">
+							</path>
+						</svg>
+					</div>
+				</div>
+			</div>
+
+			<button
+				type="submit"
+				class="bg-primary w-full cursor-pointer rounded-lg px-8 py-3 font-bold whitespace-nowrap text-white shadow-[0_4px_12px_0_rgba(255,0,0,0.4)] transition-colors hover:bg-red-700 md:w-auto">
+				Comprar Pasaje
+			</button>
+		</div>
+	</form>
+
+	<form id="cargo-form" class="animate-fade-in hidden flex-col gap-6" novalidate>
+		<div class="flex flex-col justify-between gap-4 border-b border-gray-100 pb-4 md:flex-row md:items-center">
+			<h3 class="text-primary text-lg font-bold">Consulta el Estado de tu Encomienda</h3>
+			<button
+				type="button"
+				id="btn-to-ticket"
+				class="text-primary flex items-center gap-1 text-sm font-bold hover:underline">
+				<span class="text-lg">&lsaquo;</span> Comprar Pasaje
+			</button>
+		</div>
+
+		<p class="text-sm leading-relaxed text-gray-600">
+			Ofrecemos visibilidad en tiempo real para tu tranquilidad. Ingresa los datos...
+		</p>
+
+		<div class="mt-2 grid grid-cols-1 items-end gap-4 md:grid-cols-[1fr_1fr_auto]">
+			<div>
+				<input
+					type="text"
+					name="docId"
+					required
+					placeholder="Documento de Identidad"
+					class="form-input focus:border-primary focus:ring-primary h-[50px] w-full rounded-lg border border-gray-200 bg-gray-50 px-4 text-sm transition-colors outline-none"
+				/>
+			</div>
+			<div>
+				<input
+					type="text"
+					name="trackingCode"
+					required
+					placeholder="Código de Seguimiento / Guía"
+					class="form-input focus:border-primary focus:ring-primary h-[50px] w-full rounded-lg border border-gray-200 bg-gray-50 px-4 text-sm transition-colors outline-none"
+				/>
+			</div>
+			<button
+				type="submit"
+				class="bg-primary h-[50px] rounded-lg px-8 font-bold text-white shadow-md transition-colors hover:bg-red-700">
+				Consultar Estado
+			</button>
+		</div>
+	</form>
+</div>
+
+<style>
+	.animate-fade-in {
+		animation: fadeIn 0.3s ease-in-out;
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(5px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Clase para marcar error en inputs */
+	.input-error {
+		border-color: #ef4444 !important; /* Rojo */
+		background-color: #fef2f2 !important; /* Rojo muy claro */
+	}
+</style>
+
+<script>
+	// ==========================================================
+	// REFERENCIAS DOM Y VARIABLES
+	// ==========================================================
+	const ticketForm = document.getElementById('ticket-form') as HTMLFormElement;
+	const cargoForm = document.getElementById('cargo-form') as HTMLFormElement;
+	const btnToCargo = document.getElementById('btn-to-cargo');
+	const btnToTicket = document.getElementById('btn-to-ticket');
+	const toast = document.getElementById('form-toast');
+
+	// Inputs Pasajes
+	const radioRoundTrip = document.getElementById('radio-roundtrip') as HTMLInputElement;
+	const radioOneWay = document.getElementById('radio-oneway') as HTMLInputElement;
+	const returnDateContainer = document.getElementById('return-date-container');
+	const returnDateInput = document.getElementById('return-date') as HTMLInputElement;
+	const departureDateInput = document.getElementById('departure-date') as HTMLInputElement;
+	const originSelect = document.getElementById('origin-select') as HTMLSelectElement;
+	const destSelect = document.getElementById('destination-select') as HTMLSelectElement;
+	const btnSwap = document.getElementById('btn-swap');
+
+	// ==========================================================
+	// FUNCIONES DE UTILIDAD (ALERTAS Y ERRORES)
+	// ==========================================================
+
+	function showToast(message: string, type: 'error' | 'success') {
+		if (!toast) return;
+		toast.textContent = message;
+		toast.classList.remove('hidden', 'bg-red-500', 'bg-green-500');
+		toast.classList.add(type === 'error' ? 'bg-red-500' : 'bg-green-500');
+
+		// Mostrar
+		toast.style.opacity = '1';
+
+		// Ocultar después de 3 seg
+		setTimeout(() => {
+			toast.style.opacity = '0';
+			setTimeout(() => toast.classList.add('hidden'), 300);
+		}, 3000);
+	}
+
+	function clearErrors(form: HTMLFormElement) {
+		const inputs = form.querySelectorAll('.form-input');
+		inputs.forEach((input) => input.classList.remove('input-error'));
+	}
+
+	function highlightError(input: Element | null) {
+		if (input) input.classList.add('input-error');
+	}
+
+	// ==========================================================
+	// VALIDACIÓN DE FORMULARIOS
+	// ==========================================================
+
+	// 1. VALIDAR PASAJES
+	ticketForm?.addEventListener('submit', (e) => {
+		e.preventDefault(); // Prevenir recarga
+		clearErrors(ticketForm);
+		let isValid = true;
+		let errorMessage = '';
+
+		const formData = new FormData(ticketForm);
+		const origin = formData.get('origin') as string;
+		const destination = formData.get('destination') as string;
+		const departure = formData.get('departureDate') as string;
+		const returnDate = formData.get('returnDate') as string;
+		const tripType = formData.get('tripType') as string;
+
+		// Validación Campos Vacíos
+		if (!origin) {
+			highlightError(originSelect);
+			isValid = false;
+		}
+		if (!destination) {
+			highlightError(destSelect);
+			isValid = false;
+		}
+		if (!departure) {
+			highlightError(departureDateInput);
+			isValid = false;
+		}
+
+		// Validar Fecha Vuelta solo si es Ida y Vuelta
+		if (tripType === 'roundtrip' && !returnDate) {
+			highlightError(returnDateInput);
+			isValid = false;
+		}
+
+		if (!isValid) {
+			showToast('Por favor completa todos los campos requeridos', 'error');
+			return;
+		}
+
+		// Validación Lógica: Origen != Destino
+		if (origin === destination) {
+			highlightError(originSelect);
+			highlightError(destSelect);
+			showToast('El origen y el destino no pueden ser iguales', 'error');
+			return;
+		}
+
+		// Validación Lógica: Fechas
+		if (tripType === 'roundtrip' && returnDate < departure) {
+			highlightError(returnDateInput);
+			showToast('La fecha de vuelta no puede ser antes de la ida', 'error');
+			return;
+		}
+
+		// ÉXITO
+		showToast('¡Buscando pasajes disponibles...', 'success');
+		console.log('Enviando datos de pasaje:', Object.fromEntries(formData));
+		// Aquí iría tu lógica de redirección o fetch a API
+	});
+
+	// 2. VALIDAR ENCOMIENDAS
+	cargoForm?.addEventListener('submit', (e) => {
+		e.preventDefault();
+		clearErrors(cargoForm);
+		let isValid = true;
+
+		const inputs = cargoForm.querySelectorAll('input');
+		inputs.forEach((input) => {
+			if (!input.value.trim()) {
+				highlightError(input);
+				isValid = false;
+			}
+		});
+
+		if (!isValid) {
+			showToast('Por favor ingrese todos los datos de rastreo', 'error');
+			return;
+		}
+
+		// ÉXITO
+		showToast('Consultando estado...', 'success');
+		console.log('Consultando encomienda...');
+	});
+
+	// ==========================================================
+	// LÓGICA DE INTERFAZ (UI)
+	// ==========================================================
+
+	// Toggle Formularios
+	function toggleForms(showCargo: boolean) {
+		if (showCargo) {
+			ticketForm.classList.add('hidden');
+			cargoForm.classList.remove('hidden');
+		} else {
+			cargoForm.classList.add('hidden');
+			ticketForm.classList.remove('hidden');
+		}
+	}
+	btnToCargo?.addEventListener('click', () => toggleForms(true));
+	btnToTicket?.addEventListener('click', () => toggleForms(false));
+
+	// Manejo Ida / Vuelta (Estado de Inputs)
+	function handleTripTypeChange() {
+		if (!radioOneWay || !returnDateContainer) return;
+
+		if (radioOneWay.checked) {
+			// MODO SOLO IDA
+			returnDateContainer.classList.remove('w-full');
+			returnDateContainer.classList.add('w-0', 'px-0', 'opacity-0');
+
+			// Deshabilitar y quitar required para que no bloquee validación
+			returnDateInput.disabled = true;
+			returnDateInput.removeAttribute('required');
+			returnDateInput.value = ''; // Limpiar valor
+		} else {
+			// MODO IDA Y VUELTA
+			returnDateContainer.classList.remove('w-0', 'px-0', 'opacity-0');
+			returnDateContainer.classList.add('w-full');
+
+			returnDateInput.disabled = false;
+			returnDateInput.setAttribute('required', 'true');
+		}
+	}
+	radioRoundTrip?.addEventListener('change', handleTripTypeChange);
+	radioOneWay?.addEventListener('change', handleTripTypeChange);
+
+	// Swap Origen / Destino
+	btnSwap?.addEventListener('click', () => {
+		if (!originSelect || !destSelect) return;
+		const tempOrigin = originSelect.value;
+		const tempDest = destSelect.value;
+		originSelect.value = tempDest;
+		destSelect.value = tempOrigin;
+
+		// Animación
+		const icon = btnSwap.querySelector('svg');
+		if (icon) {
+			icon.style.transform = 'rotate(180deg)';
+			setTimeout(() => (icon.style.transform = 'rotate(0deg)'), 300);
+		}
+	});
+
+	// Configurar fecha mínima (hoy) para los inputs de fecha
+	const today = new Date().toISOString().split('T')[0];
+	departureDateInput?.setAttribute('min', today);
+	returnDateInput?.setAttribute('min', today);
+</script>
