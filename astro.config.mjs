@@ -8,5 +8,6 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
+	site: 'https://jmatochepascual.github.io',
 	base: '/Terramovil/',
 });
