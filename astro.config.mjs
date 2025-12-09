@@ -9,5 +9,5 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	site: 'https://jmatochepascual.github.io',
-	base: '/Terramovil/',
+	base: '/Terramovil',
 });
