@@ -40,7 +40,16 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 				type="button"
 				id="btn-to-cargo"
 				class="text-primary flex cursor-pointer items-center gap-1 text-base hover:underline">
-				Consultar Encomienda <span class="pb-1 text-lg">&rsaquo;</span>
+				Consultar Encomienda
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="2"
+					stroke="currentColor"
+					class="h-4 w-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+				</svg>
 			</button>
 		</div>
 
@@ -175,12 +184,21 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 		<div class="flex flex-col justify-between gap-4 border-b border-gray-100 pb-4 md:flex-row md:items-center">
 			<h3 class="text-primary text-lg font-bold">Consulta el Estado de tu Encomienda</h3>
 			<button type="button" id="btn-to-ticket" class="text-primary flex items-center gap-1 hover:underline">
-				<span class="pb-1 text-lg">&lsaquo;</span> Comprar Pasaje
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="2"
+					stroke="currentColor"
+					class="h-4 w-4 rotate-180">
+					<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+				</svg> Comprar Pasaje
 			</button>
 		</div>
 
-		<p class="text-sm leading-relaxed text-gray-600">
-			Ofrecemos visibilidad en tiempo real para tu tranquilidad. Ingresa los datos...
+		<p class="mt-4 text-sm leading-relaxed text-gray-600">
+			Ofrecemos visibilidad en tiempo real para tu tranquilidad. Ingresa el código de seguimiento que se te proporcionó
+			en la ventanilla y verifica la ubicación y el estado de entrega de tu paquete.
 		</p>
 
 		<div class="mt-2 grid grid-cols-1 items-end gap-4 md:grid-cols-[1fr_1fr_auto]">
