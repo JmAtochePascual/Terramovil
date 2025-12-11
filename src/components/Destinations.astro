@@ -9,16 +9,14 @@ interface Props {
 }
 
 const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, '');
-const { limit, showButton = false, title = 'Unimos tus Destinos Principales' } = Astro.props;
+const { limit, showButton = false } = Astro.props;
 const destinations = limit ? DESTINATIONS_DATA.slice(0, limit) : DESTINATIONS_DATA;
 ---
 
 <div class="max-w-container mx-auto w-[95%]">
 	<div class="mx-auto mb-12 max-w-xl text-center md:mb-16 lg:mb-20">
 		<span class="text-primary text-lg font-bold tracking-wider">Cobertura Nacional</span>
-		<h2 class="mx-auto mt-2 text-3xl font-bold text-gray-900 md:text-5xl">
-			{title}
-		</h2>
+		<h2 class="mx-auto mt-2 text-3xl font-bold text-gray-900 md:text-5xl">Unimos tus Destinos Principales</h2>
 		<p class="mx-auto mt-4 max-w-2xl text-gray-600">
 			Brindamos servicio de transporte terrestre conectando Lima con las principales ciudades del Norte y Centro del
 			país.
