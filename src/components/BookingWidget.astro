@@ -252,9 +252,6 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 </style>
 
 <script>
-	// ==========================================================
-	// REFERENCIAS DOM Y VARIABLES
-	// ==========================================================
 	const ticketForm = document.getElementById('ticket-form') as HTMLFormElement;
 	const cargoForm = document.getElementById('cargo-form') as HTMLFormElement;
 	const btnToCargo = document.getElementById('btn-to-cargo');
@@ -270,10 +267,6 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 	const originSelect = document.getElementById('origin-select') as HTMLSelectElement;
 	const destSelect = document.getElementById('destination-select') as HTMLSelectElement;
 	const btnSwap = document.getElementById('btn-swap');
-
-	// ==========================================================
-	// FUNCIONES DE UTILIDAD (ALERTAS Y ERRORES)
-	// ==========================================================
 
 	function showToast(message: string, type: 'error' | 'success') {
 		if (!toast) return;
@@ -299,10 +292,6 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 	function highlightError(input: Element | null) {
 		if (input) input.classList.add('input-error');
 	}
-
-	// ==========================================================
-	// VALIDACIÓN DE FORMULARIOS
-	// ==========================================================
 
 	// 1. VALIDAR PASAJES
 	ticketForm?.addEventListener('submit', (e) => {
@@ -387,10 +376,6 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 		showToast('Consultando estado...', 'success');
 		console.log('Consultando encomienda...');
 	});
-
-	// ==========================================================
-	// LÓGICA DE INTERFAZ (UI)
-	// ==========================================================
 
 	// Toggle Formularios
 	function toggleForms(showCargo: boolean) {
