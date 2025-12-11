@@ -1,47 +1,51 @@
 ---
-import '../styles/global.css';
+import type { PageSEO } from '@interfaces/shared';
+
+import '@styles/global.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/700.css';
 
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
-export interface Props {
-	title: string;
-}
+interface Props extends PageSEO {}
 
-const { title } = Astro.props;
+const { title, description, image } = Astro.props;
+
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<link rel="icon" type="image/svg+xml" href={`${BASE}/favicon.svg`} />
+
 		<meta name="generator" content={Astro.generator} />
 
-		<!-- meta tags -->
-		<meta name="description" content="Agencia de viajes y transporte terrestre" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
 		<meta name="author" content="Terramovil" />
-		<meta name="keywords" content="viajes, transporte terrestre, Terramovil, Perú" />
+		<meta name="keywords" content="viajes, transporte terrestre, Terramovil, Perú, bus, pasajes" />
 		<meta name="robots" content="index, follow" />
 
-		<!-- open graph
-		<meta property="og:title" content="Terramovil" />
-		<meta property="og:description" content="Agencia de viajes y transporte terrestre" />
-		<meta property="og:image" content="https://terramovil.com.pe/og-image.jpg" />
-		<meta property="og:url" content="https://terramovil.com.pe/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Terramovil" /> -->
+		<meta property="og:image" content={new URL(image, Astro.url)} />
 
-		<title>{title}</title>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(image, Astro.url)} />
 	</head>
 
-	<body class="h-full w-full antialiased">
+	<body class="flex min-h-screen w-full flex-col bg-gray-50 text-gray-900 antialiased">
 		<Header />
 
-		<main class="overflow-x-hidden">
+		<main class="grow overflow-x-hidden">
 			<slot />
 		</main>
 
@@ -49,8 +53,22 @@ const { title } = Astro.props;
 	</body>
 </html>
 
-<style>
+<style is:global>
 	html {
 		scroll-behavior: smooth;
+	}
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #888;
+		border-radius: 5px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
 	}
 </style>

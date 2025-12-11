@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
+
+import { NAV_LINKS } from '@data/links-data';
 import menuIcon from '@assets/icons/menu-logo.svg';
 import logo from '@assets/img/terramovil_logo.png';
-import { NAV_LINKS } from '@data/links-data';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');

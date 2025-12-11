@@ -1,4 +1,5 @@
 ---
+import { HOME_SEO } from '@data/seo';
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
 import BookingWidget from '@components/BookingWidget.astro';
@@ -9,7 +10,7 @@ import Mockup from '@components/Mockup.astro';
 import FleetSection from '@components/FleetSection.astro';
 ---
 
-<Layout title="Terremóvil">
+<Layout {...HOME_SEO}>
 	<Hero page="home" />
 
 	<BookingWidget />
