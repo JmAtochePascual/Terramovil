@@ -18,6 +18,7 @@ interface FeaturesSectionData {
 	title: string;
 	description: string;
 	image: ImageMetadata;
+	alt: string;
 	items: FeatureItem[];
 }
 
@@ -28,6 +29,7 @@ export const FEATURES_DATA: Record<string, FeaturesSectionData> = {
 		description:
 			'Hemos renovado nuestra plataforma para que comprar tu pasaje sea tan cómodo como viajar en nuestros asientos 160°. Olvídate de las colas en el terminal y gestiona tu viaje desde tu celular con total seguridad.',
 		image: featuresImageHome,
+		alt: 'Mujer abriendo la app de Terramovil',
 		items: [
 			{
 				title: 'Compra Fácil y Rápida',
