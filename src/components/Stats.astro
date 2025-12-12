@@ -1,16 +1,22 @@
 ---
-import { STATS_DATA } from '../data/stasts';
+import type { StatItem } from '@interfaces/components';
+
+interface Props {
+	items: StatItem[];
+}
+
+const { items } = Astro.props;
 ---
 
-<section class="py-8 md:py-12 lg:py-20">
+<section class="py-12 lg:py-24">
 	<div class="max-w-container mx-auto w-[95%]">
-		<div class="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-3 md:gap-6 md:divide-x md:divide-y-0">
+		<div class="grid grid-cols-1 divide-y divide-gray-200 md:grid-cols-3 md:gap-8 md:divide-x md:divide-y-0">
 			{
-				STATS_DATA.map((stat) => (
-					<div class="flex flex-col items-center gap-2 py-8 text-center md:text-left lg:gap-8 lg:py-0">
-						<span class="text-primary text-5xl font-bold lg:text-center lg:text-[80px]">{stat.value}</span>
+				items.map((stat) => (
+					<div class="flex flex-col items-center gap-2 px-4 py-8 text-center md:py-2">
+						<span class="text-primary text-5xl leading-none font-extrabold xl:text-[80px]">{stat.value}</span>
 
-						<p class="mx-auto max-w-80 text-[20px] leading-tight font-bold text-black md:mx-0 lg:text-center">
+						<p class="max-w-[280px] text-lg leading-tight font-bold text-gray-900 lg:max-w-[80%] lg:text-xl">
 							{stat.label}
 						</p>
 					</div>

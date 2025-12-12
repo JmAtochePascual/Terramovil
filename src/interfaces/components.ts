@@ -22,3 +22,8 @@ export interface FeatureGridData {
 	imageAlt: string;
 	items: FeatureItem[];
 }
+
+export interface StatItem {
+	value: string;
+	label: string;
+}

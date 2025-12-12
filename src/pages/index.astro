@@ -3,6 +3,7 @@ import { HOME_SEO } from '@data/seo';
 
 import { HOME } from '@data/heroes';
 import { HOME_FEATURES } from '@data/features';
+import { HOME_STATS } from '@data/stats';
 
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
@@ -23,7 +24,7 @@ import FleetSection from '@components/FleetSection.astro';
 		<Features {...HOME_FEATURES} reversed={true} />
 	</section>
 
-	<Stats />
+	<Stats items={HOME_STATS} />
 
 	<section class="py-20 lg:py-32">
 		<Destinations limit={8} showButton={true} />

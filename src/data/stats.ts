@@ -1,9 +1,6 @@
-interface StatItem {
-	value: string;
-	label: string;
-}
+import type { StatItem } from '@interfaces/components';
 
-export const STATS_DATA: StatItem[] = [
+export const HOME_STATS: StatItem[] = [
 	{
 		value: '10 Años',
 		label: 'De experiencia en transporte interprovincial.',
