@@ -1,5 +1,8 @@
 ---
 import { HOME_SEO } from '@data/seo';
+
+import { HOME } from '@data/heroes';
+
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
 import BookingWidget from '@components/BookingWidget.astro';
@@ -11,7 +14,7 @@ import FleetSection from '@components/FleetSection.astro';
 ---
 
 <Layout {...HOME_SEO}>
-	<Hero page="home" />
+	<Hero {...HOME} />
 
 	<BookingWidget />
 

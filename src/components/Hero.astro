@@ -1,43 +1,35 @@
 ---
-import { HERO_DATA } from '@data/hero-data';
+import { Image } from 'astro:assets';
+import type { HeroData } from '@interfaces/components';
 
-interface Props {
-	page: keyof typeof HERO_DATA;
-}
+interface Props extends HeroData {}
 
-const { page } = Astro.props;
-
-const data = HERO_DATA[page];
-
-if (!data) {
-	throw new Error(`No se encontró información del Hero para la página: ${page}`);
-}
-
-const { title, span, description, backgroundImage } = data;
-
-const hasContent = title || description;
+const { title, span, description, backgroundImage, altImage } = Astro.props;
 ---
 
-<section
-	class="relative flex h-[400px] w-full items-center bg-cover bg-center bg-no-repeat md:h-[684px]"
-	id="hero"
-	style={`background-image: url(${backgroundImage.src})`}>
-	{hasContent && <div class="absolute inset-0 z-0 bg-linear-to-r from-[#000]/60 to-transparent" />}
+<section class="relative flex h-[420px] w-full items-center overflow-hidden md:h-[684px]" id="hero">
+	<Image
+		src={backgroundImage}
+		alt={altImage}
+		class="absolute inset-0 z-0 h-full w-full object-cover"
+		width={1920}
+		loading="eager"
+	/>
 
-	{
-		hasContent && (
-			<div class="max-w-container relative z-10 mx-auto w-[95%]">
-				<div class="flex max-w-[684px] flex-col gap-4">
-					{title && (
-						<h1 class="max-w-[600px] text-4xl text-white uppercase md:text-7xl lg:text-7xl">
-							{title}
-							{span && <span class="text-primary"> {span}</span>}
-						</h1>
-					)}
+	<div class="absolute inset-0 z-10 bg-linear-to-r from-[#000000]/60 via-[#000000]/30 to-transparent"></div>
 
-					{description && <p class="max-w-[540px] text-white">{description}</p>}
-				</div>
-			</div>
-		)
-	}
+	<div class="max-w-container relative z-20 mx-auto w-[95%]">
+		<div class="flex max-w-[600px] flex-col gap-2">
+			{
+				title && (
+					<h1 class="text-4xl leading-tight text-white uppercase drop-shadow-lg md:text-6xl lg:text-7xl">
+						{title}
+						{span && <span class="text-primary block"> {span}</span>}
+					</h1>
+				)
+			}
+
+			{description && <p class="max-w-[540px] text-white">{description}</p>}
+		</div>
+	</div>
 </section>
