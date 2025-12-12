@@ -74,3 +74,14 @@ export interface FleetSectionData {
 	description: string;
 	items: FleetItem[];
 }
+
+export interface FAQItem {
+	question: string;
+	answer: string;
+}
+
+export interface FAQSectionData {
+	title: string;
+	description: string;
+	items: FAQItem[];
+}

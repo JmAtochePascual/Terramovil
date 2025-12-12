@@ -6,6 +6,8 @@ import { HOME_FEATURES } from '@data/features';
 import { HOME_STATS } from '@data/stats';
 import { HOME_DESTINATIONS_SECTION } from '@data/destinations';
 import { HOME_FLEET_SECTION } from '@data/fleet';
+import { SAFETY_FEATURES } from '@data/safety';
+import { HOME_FAQ } from '@data/faq';
 
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
@@ -15,6 +17,8 @@ import Stats from '@components/Stats.astro';
 import Destinations from '@components/Destinations.astro';
 import CTASection from '@components/CTASection.astro';
 import Fleet from '@components/Fleet.astro';
+import FeatureList from '@components/FeatureList.astro';
+import FAQ from '@components/FAQ.astro';
 ---
 
 <Layout {...HOME_SEO}>
@@ -33,4 +37,10 @@ import Fleet from '@components/Fleet.astro';
 	<CTASection {...HOME_CTA} />
 
 	<Fleet {...HOME_FLEET_SECTION} />
+
+	<section class="py-6 md:py-12 lg:py-32">
+		<FeatureList {...SAFETY_FEATURES} />
+	</section>
+
+	<FAQ {...HOME_FAQ} />
 </Layout>

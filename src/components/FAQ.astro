@@ -1,0 +1,65 @@
+---
+import type { FAQSectionData } from '@interfaces/components';
+
+interface Props extends FAQSectionData {}
+
+const { title, description, items } = Astro.props;
+---
+
+<section class="py-16 md:py-24">
+	<div class="max-w-container mx-auto w-[95%]">
+		<div class="mb-12 text-left">
+			<h2 class="text-3xl leading-tight font-bold text-gray-900 md:text-4xl">
+				{title}
+			</h2>
+			<p class="mt-2 text-lg text-gray-600">
+				{description}
+			</p>
+		</div>
+
+		<div class="divide-y divide-gray-200 border-t border-b border-gray-200">
+			{
+				items.map((item) => (
+					<details class="group py-4">
+						<summary class="text-primary focus-visible:ring-primary flex w-full cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-bold transition-colors group-hover:text-red-700 focus:outline-none focus-visible:ring-2">
+							{item.question}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2.5"
+								stroke="currentColor"
+								class="h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-180">
+								<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+							</svg>
+						</summary>
+
+						<div class="animate-fade-in mt-4 max-w-2xl pr-4 leading-relaxed text-gray-600">{item.answer}</div>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+	details summary {
+		list-style: none;
+	}
+	.animate-fade-in {
+		animation: fadeIn 0.3s ease-in-out;
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(-5px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
