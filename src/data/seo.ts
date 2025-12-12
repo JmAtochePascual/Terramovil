@@ -1,4 +1,4 @@
-import type { PageSEO } from '../interfaces/shared';
+import type { PageSEO } from '@interfaces/shared';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 

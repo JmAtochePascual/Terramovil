@@ -7,7 +7,7 @@ import facebookIcon from '@assets/icons/facebook_icon.svg';
 import instagramIcon from '@assets/icons/instagram_icon.svg';
 import whatsappIcon from '@assets/icons/whatsapp_icon.svg';
 
-import { SITE_INFO, NAV_LINKS, LEGAL_LINKS, SOCIAL_LINKS } from '@data/links-data';
+import { SITE_INFO, NAV_LINKS, LEGAL_LINKS, SOCIAL_LINKS } from '@data/navigations';
 
 const iconMap: Record<string, ImageMetadata> = {
 	facebook: facebookIcon,
@@ -30,8 +30,8 @@ const HOME_URL = BASE || '/';
 	<div class="max-w-container relative z-10 mx-auto flex w-[95%] flex-col gap-10">
 		<div class="grid gap-6 md:grid-cols-[2fr_1fr] md:justify-between">
 			<div class="flex flex-col gap-8">
-				<a href={HOME_URL} class="cursor-pointer">
-					<Image src={logo} alt="Logo Terramovil" width={200} height={92} class="h-[92px] w-[200px]" />
+				<a href={HOME_URL} class="cursor-pointer" aria-label="Ir a la página de inicio">
+					<Image src={logo} alt="Logo Terramovil" width={200} height={92} class="h-[92px] w-[200px]" loading="lazy" />
 				</a>
 
 				<div class="flex flex-col gap-1">
@@ -73,7 +73,7 @@ const HOME_URL = BASE || '/';
 			</div>
 
 			<div class="flex flex-col gap-6 md:flex-row">
-				<nav class="flex flex-col gap-1 md:w-full">
+				<nav class="flex flex-col gap-1 md:w-full" aria-label="Navegación del pie de página">
 					{
 						NAV_LINKS.map((link) => {
 							const isActive = currentPath === link.href;
@@ -93,17 +93,15 @@ const HOME_URL = BASE || '/';
 					}
 				</nav>
 
-				<nav class="flex flex-col gap-1 md:w-full">
+				<nav class="flex flex-col gap-1 md:w-full" aria-label="Enlaces legales">
 					{
-						LEGAL_LINKS.map((link) => {
-							const href = link.href.startsWith(BASE) ? link.href : `${BASE}${link.href}`;
-
-							return (
-								<a href={href} class="border-b border-transparent p-2 text-sm transition-colors hover:border-white/50">
-									{link.label}
-								</a>
-							);
-						})
+						LEGAL_LINKS.map((link) => (
+							<a
+								href={link.href}
+								class="border-b border-transparent p-2 text-sm transition-colors hover:border-white/50">
+								{link.label}
+							</a>
+						))
 					}
 				</nav>
 			</div>

@@ -1,6 +1,8 @@
+import type { NavLink, SiteInfo, SocialLink } from '@interfaces/shared';
+
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-export const SITE_INFO = {
+export const SITE_INFO: SiteInfo = {
 	address: 'Av. Luna Pizarro Nº 442, La Víctoria, Lima, Perú',
 	email: 'terramovilperu@gmail.com',
 	phones: {
@@ -10,7 +12,7 @@ export const SITE_INFO = {
 	bookComplaintUrl: 'https://www.terramovilperu.com.pe:8443/ventas/form',
 };
 
-export const NAV_LINKS = [
+export const NAV_LINKS: NavLink[] = [
 	{ label: 'Inicio', href: BASE || '/' },
 	{ label: 'Servicios', href: `${BASE}/servicios` },
 	{ label: 'Destinos', href: `${BASE}/destinos` },
@@ -19,7 +21,7 @@ export const NAV_LINKS = [
 	{ label: 'Contacto', href: `${BASE}/contacto` },
 ];
 
-export const LEGAL_LINKS = [
+export const LEGAL_LINKS: NavLink[] = [
 	{ label: 'TC - Pasajes', href: 'https://terramovil.bus.net.pe/terminos-pasajes' },
 	{ label: 'TC - Encomiendas', href: 'https://terramovil.bus.net.pe/terminos-encomiendas' },
 	{ label: 'TC - Promociones', href: BASE || '/' },
@@ -27,7 +29,7 @@ export const LEGAL_LINKS = [
 	{ label: 'TC - Prensa', href: BASE || '/' },
 ];
 
-export const SOCIAL_LINKS = [
+export const SOCIAL_LINKS: SocialLink[] = [
 	{ name: 'Facebook', href: 'https://www.facebook.com/TerramovilPeru/?locale=es_LA', iconKey: 'facebook' },
 	{ name: 'Instagram', href: 'https://www.instagram.com/terramovilperu/', iconKey: 'instagram' },
 	{ name: 'WhatsApp', href: 'https://wa.me/979707957', iconKey: 'whatsapp' },
