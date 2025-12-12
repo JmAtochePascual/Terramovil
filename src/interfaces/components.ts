@@ -43,3 +43,18 @@ export interface DestinationsSection {
 	limit?: number;
 	showButton?: boolean;
 }
+
+export interface CTAButton {
+	label: string;
+	href: string;
+	variant: 'solid' | 'outline';
+	isExternal?: boolean;
+}
+
+export interface CTAData {
+	title: string;
+	description: string;
+	buttons?: CTAButton[];
+	image?: ImageMetadata;
+	imageAlt?: string;
+}

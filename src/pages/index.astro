@@ -1,6 +1,6 @@
 ---
+import { HOME_CTA } from '@data/cta';
 import { HOME_SEO } from '@data/seo';
-
 import { HOME } from '@data/heroes';
 import { HOME_FEATURES } from '@data/features';
 import { HOME_STATS } from '@data/stats';
@@ -12,7 +12,7 @@ import BookingWidget from '@components/BookingWidget.astro';
 import Features from '@components/FeatureGrid.astro';
 import Stats from '@components/Stats.astro';
 import Destinations from '@components/Destinations.astro';
-import Mockup from '@components/Mockup.astro';
+import CTASection from '@components/CTASection.astro';
 import FleetSection from '@components/FleetSection.astro';
 ---
 
@@ -27,11 +27,9 @@ import FleetSection from '@components/FleetSection.astro';
 
 	<Stats items={HOME_STATS} />
 
-	<section class="py-20 lg:py-32">
-		<Destinations {...HOME_DESTINATIONS_SECTION} />
-	</section>
+	<Destinations {...HOME_DESTINATIONS_SECTION} />
 
-	<Mockup />
+	<CTASection {...HOME_CTA} />
 
 	<FleetSection />
 </Layout>

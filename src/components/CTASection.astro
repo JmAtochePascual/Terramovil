@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import type { CTAData } from '@interfaces/components';
+
+interface Props extends CTAData {}
+
+const { title, description, buttons, image, imageAlt } = Astro.props;
+
+const hasMedia = !!image;
+---
+
+<section class="bg-primary relative py-20 xl:py-28">
+	<div class="max-w-container mx-auto w-[95%]">
+		<div
+			class={`
+      ${hasMedia ? 'grid gap-10 lg:grid-cols-2 lg:gap-0 lg:items-center' : 'flex flex-col items-center text-center'}
+    `}>
+			<div
+				class={`
+        flex flex-col gap-6 
+        ${hasMedia ? 'text-center mx-auto max-w-[500px] md:max-w-[700px] lg:text-left lg:mx-0' : 'max-w-4xl'}
+      `}>
+				<h2 class="text-3xl leading-tight font-bold text-white md:text-5xl">
+					{title}
+				</h2>
+
+				<p class="text-lg leading-relaxed text-white/90">
+					{description}
+				</p>
+
+				{
+					buttons && buttons.length > 0 && (
+						<div class="mt-4 flex flex-col gap-4 md:flex-row md:justify-center lg:justify-start">
+							{buttons.map((btn) => (
+								<a
+									href={btn.href}
+									target={btn.isExternal ? '_blank' : '_self'}
+									rel={btn.isExternal ? 'noopener noreferrer' : undefined}
+									class={`relative z-10 flex items-center justify-center rounded-lg px-8 py-3 shadow-lg transition-transform hover:scale-105 ${
+										btn.variant === 'solid'
+											? 'bg-white text-black'
+											: 'hover:text-primary border-2 border-white text-white hover:bg-white'
+									} `}>
+									{btn.label}
+								</a>
+							))}
+						</div>
+					)
+				}
+			</div>
+
+			{
+				hasMedia && image && (
+					<div class="relative hidden h-full min-h-[400px] lg:block">
+						<Image
+							src={image}
+							alt={imageAlt || ''}
+							class="absolute top-1/2 left-10 w-full max-w-none -translate-y-1/2 object-contain drop-shadow-2xl lg:scale-200"
+							width={1200}
+						/>
+					</div>
+				)
+			}
+		</div>
+	</div>
+</section>

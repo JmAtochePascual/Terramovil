@@ -11,41 +11,43 @@ const visibleDestinations = limit ? items.slice(0, limit) : items;
 const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<section class="max-w-container mx-auto w-[95%]">
-	<div class="mx-auto mb-12 max-w-xl text-center md:mb-16 lg:mb-20">
-		<span class="text-primary text-lg font-bold tracking-wider uppercase">
-			{eyebrow}
-		</span>
-		<h2 class="mx-auto mt-2 text-3xl leading-tight font-bold text-gray-900 md:text-5xl">
-			{title}
-		</h2>
-		<p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-			{description}
-		</p>
-	</div>
+<section class="py-20 lg:py-32">
+	<div class="max-w-container mx-auto w-[95%]">
+		<div class="mx-auto mb-12 max-w-xl text-center md:mb-16 lg:mb-20">
+			<span class="text-primary text-lg font-bold tracking-wider">
+				{eyebrow}
+			</span>
+			<h2 class="mx-auto mt-2 text-3xl leading-tight font-bold text-gray-900 md:text-5xl">
+				{title}
+			</h2>
+			<p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+				{description}
+			</p>
+		</div>
 
-	<div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
-		{visibleDestinations.map((item) => <DestinationCard {...item} />)}
-	</div>
+		<div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
+			{visibleDestinations.map((item) => <DestinationCard {...item} />)}
+		</div>
 
-	{
-		showButton && (
-			<div class="mt-12 text-center">
-				<a
-					href={`${BASE_URL}/destinos`}
-					class="text-primary group relative z-40 inline-flex items-center gap-2 text-lg transition-colors hover:text-red-700 hover:underline">
-					Ver todos los destinos
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="2.5"
-						stroke="currentColor"
-						class="h-4 w-4 transition-transform group-hover:translate-x-1">
-						<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-					</svg>
-				</a>
-			</div>
-		)
-	}
+		{
+			showButton && (
+				<div class="mt-12 text-center">
+					<a
+						href={`${BASE_URL}/destinos`}
+						class="text-primary group relative z-40 inline-flex items-center gap-2 text-lg transition-colors hover:text-red-700 hover:underline">
+						Ver todos los destinos
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="2.5"
+							stroke="currentColor"
+							class="h-4 w-4 transition-transform group-hover:translate-x-1">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+						</svg>
+					</a>
+				</div>
+			)
+		}
+	</div>
 </section>
