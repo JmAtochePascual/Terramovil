@@ -1,5 +1,5 @@
 ---
-import { CITIES } from '../data/form-data';
+import { CITIES } from '@data/cities';
 
 const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>`;
 ---
@@ -7,7 +7,7 @@ const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 <div class="max-w-container relative z-20 mx-auto -mt-16 w-[95%] rounded-xl bg-white p-6 shadow-2xl lg:-mt-20">
 	<div
 		id="form-toast"
-		class="fixed top-5 right-5 z-50 hidden max-w-sm rounded-lg p-4 text-sm font-bold text-white shadow-lg transition-opacity duration-300">
+		class="fixed right-0 bottom-10 z-30 hidden max-h-min max-w-sm rounded-md p-4 text-sm text-white shadow-lg transition-opacity duration-300">
 	</div>
 
 	<form id="ticket-form" class="animate-fade-in flex flex-col gap-6" novalidate>
