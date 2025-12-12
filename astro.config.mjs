@@ -10,4 +10,7 @@ export default defineConfig({
 	},
 	site: 'https://jmatochepascual.github.io',
 	base: '/Terramovil',
+	build: {
+		assets: 'assets',
+	},
 });
