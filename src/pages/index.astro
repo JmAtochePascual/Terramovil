@@ -4,6 +4,7 @@ import { HOME_SEO } from '@data/seo';
 import { HOME } from '@data/heroes';
 import { HOME_FEATURES } from '@data/features';
 import { HOME_STATS } from '@data/stats';
+import { HOME_DESTINATIONS_SECTION } from '@data/destinations';
 
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
@@ -27,7 +28,7 @@ import FleetSection from '@components/FleetSection.astro';
 	<Stats items={HOME_STATS} />
 
 	<section class="py-20 lg:py-32">
-		<Destinations limit={8} showButton={true} />
+		<Destinations {...HOME_DESTINATIONS_SECTION} />
 	</section>
 
 	<Mockup />

@@ -27,3 +27,19 @@ export interface StatItem {
 	value: string;
 	label: string;
 }
+
+export interface DestinationItem {
+	city: string;
+	region: string;
+	tagline: string;
+	image: ImageMetadata;
+}
+
+export interface DestinationsSection {
+	eyebrow: string;
+	title: string;
+	description: string;
+	items: DestinationItem[];
+	limit?: number;
+	showButton?: boolean;
+}

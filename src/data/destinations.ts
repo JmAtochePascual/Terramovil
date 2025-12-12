@@ -1,30 +1,23 @@
-import type { ImageMetadata } from 'astro';
+import type { DestinationItem, DestinationsSection } from '@interfaces/components';
 
-import imgChiclayo from '../assets/img/destinos/chiclayo.jpg';
-import imgPiura from '../assets/img/destinos/piura.jpg';
-import imgSullana from '../assets/img/destinos/sullana.jpg';
-import imgpPaita from '../assets/img/destinos/paita.jpg';
-import imgCatacaos from '../assets/img/destinos/catacaos.jpg';
-import imgChatoGrande from '../assets/img/destinos/chato-grande.jpg';
-import imgLaUnion from '../assets/img/destinos/la-union.jpg';
-import imgLaAreana from '../assets/img/destinos/la-arena.jpg';
-import imgSechura from '../assets/img/destinos/sechura.jpg';
-import imgHuancayo from '../assets/img/destinos/huancayo.jpg';
-import imgLasLomas from '../assets/img/destinos/las-lomas.jpg';
-import imgLima from '../assets/img/destinos/lima.jpg';
-import imgTamboGrande from '../assets/img/destinos/tambo-grande.jpg';
-import imgConcepcion from '../assets/img/destinos/concepcion.jpg';
-import imgJauja from '../assets/img/destinos/jauja.png';
-import imgAlmiranteGrau from '../assets/img/destinos/almirante-grau.jpg';
+import imgChiclayo from '@assets/img/destinos/chiclayo.jpg';
+import imgPiura from '@assets/img/destinos/piura.jpg';
+import imgSullana from '@assets/img/destinos/sullana.jpg';
+import imgpPaita from '@assets/img/destinos/paita.jpg';
+import imgCatacaos from '@assets/img/destinos/catacaos.jpg';
+import imgChatoGrande from '@assets/img/destinos/chato-grande.jpg';
+import imgLaUnion from '@assets/img/destinos/la-union.jpg';
+import imgLaAreana from '@assets/img/destinos/la-arena.jpg';
+import imgSechura from '@assets/img/destinos/sechura.jpg';
+import imgHuancayo from '@assets/img/destinos/huancayo.jpg';
+import imgLasLomas from '@assets/img/destinos/las-lomas.jpg';
+import imgLima from '@assets/img/destinos/lima.jpg';
+import imgTamboGrande from '@assets/img/destinos/tambo-grande.jpg';
+import imgConcepcion from '@assets/img/destinos/concepcion.jpg';
+import imgJauja from '@assets/img/destinos/jauja.png';
+import imgAlmiranteGrau from '@assets/img/destinos/almirante-grau.jpg';
 
-export interface DestinationItem {
-	city: string;
-	region: string;
-	tagline: string;
-	image: ImageMetadata;
-}
-
-export const DESTINATIONS_DATA: DestinationItem[] = [
+export const ALL_DESTINATIONS: DestinationItem[] = [
 	{
 		city: 'CHICLAYO',
 		region: 'Norte Chico',
@@ -122,3 +115,13 @@ export const DESTINATIONS_DATA: DestinationItem[] = [
 		image: imgAlmiranteGrau,
 	},
 ];
+
+export const HOME_DESTINATIONS_SECTION: DestinationsSection = {
+	eyebrow: 'Cobertura Nacional',
+	title: 'Unimos tus Destinos Principales',
+	description:
+		'Brindamos servicio de transporte terrestre conectando Lima con las principales ciudades del Norte y Centro del país. Garantizamos traslados puntuales y seguros hacia estos puntos de llegada.',
+	items: ALL_DESTINATIONS,
+	limit: 8,
+	showButton: true,
+};
