@@ -5,6 +5,7 @@ import { HOME } from '@data/heroes';
 import { HOME_FEATURES } from '@data/features';
 import { HOME_STATS } from '@data/stats';
 import { HOME_DESTINATIONS_SECTION } from '@data/destinations';
+import { HOME_FLEET_SECTION } from '@data/fleet';
 
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
@@ -13,7 +14,7 @@ import Features from '@components/FeatureGrid.astro';
 import Stats from '@components/Stats.astro';
 import Destinations from '@components/Destinations.astro';
 import CTASection from '@components/CTASection.astro';
-import FleetSection from '@components/FleetSection.astro';
+import Fleet from '@components/Fleet.astro';
 ---
 
 <Layout {...HOME_SEO}>
@@ -31,5 +32,5 @@ import FleetSection from '@components/FleetSection.astro';
 
 	<CTASection {...HOME_CTA} />
 
-	<FleetSection />
+	<Fleet {...HOME_FLEET_SECTION} />
 </Layout>

@@ -58,3 +58,19 @@ export interface CTAData {
 	image?: ImageMetadata;
 	imageAlt?: string;
 }
+
+export interface FleetItem {
+	service: string;
+	title: string;
+	description: string;
+	image: ImageMetadata;
+	altImage: string;
+	link: string;
+}
+
+export interface FleetSectionData {
+	eyebrow: string;
+	title: string;
+	description: string;
+	items: FleetItem[];
+}
