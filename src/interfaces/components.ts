@@ -85,3 +85,10 @@ export interface FAQSectionData {
 	description: string;
 	items: FAQItem[];
 }
+
+export interface WhatsAppData {
+	phone: string;
+	message?: string;
+	label: string;
+	icon: ImageMetadata;
+}

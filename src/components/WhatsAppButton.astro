@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import type { WhatsAppData } from '@interfaces/components';
+
+interface Props extends WhatsAppData {}
+
+const { phone, message, label, icon } = Astro.props;
+
+const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message || '')}`;
+---
+
+<a
+	href={whatsappUrl}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={label}
+	class="fixed right-6 bottom-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-transform duration-300 hover:scale-110 hover:shadow-[0_6px_20px_0_rgba(37,211,102,0.23)] md:right-8 md:bottom-8 md:h-16 md:w-16">
+	<Image src={icon} alt="WhatsApp Icon" class="h-8 w-8 md:h-10 md:w-10" />
+</a>
