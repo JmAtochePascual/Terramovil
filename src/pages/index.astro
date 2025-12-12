@@ -2,11 +2,12 @@
 import { HOME_SEO } from '@data/seo';
 
 import { HOME } from '@data/heroes';
+import { HOME_FEATURES } from '@data/features';
 
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
 import BookingWidget from '@components/BookingWidget.astro';
-import Features from '@components/Features.astro';
+import Features from '@components/FeatureGrid.astro';
 import Stats from '@components/Stats.astro';
 import Destinations from '@components/Destinations.astro';
 import Mockup from '@components/Mockup.astro';
@@ -19,7 +20,7 @@ import FleetSection from '@components/FleetSection.astro';
 	<BookingWidget />
 
 	<section class="py-8 md:py-12 lg:pt-20 lg:pb-32">
-		<Features page="home" reversed={true} />
+		<Features {...HOME_FEATURES} reversed={true} />
 	</section>
 
 	<Stats />

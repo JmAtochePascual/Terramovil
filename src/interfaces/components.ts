@@ -7,3 +7,18 @@ export interface HeroData {
 	backgroundImage: ImageMetadata;
 	altImage: string;
 }
+
+export interface FeatureItem {
+	title: string;
+	description: string;
+	icon: ImageMetadata;
+}
+
+export interface FeatureGridData {
+	eyebrow: string;
+	title: string;
+	description: string;
+	image: ImageMetadata;
+	imageAlt: string;
+	items: FeatureItem[];
+}
