@@ -1,0 +1,28 @@
+---
+import TerminalCard from './TerminalCard.astro';
+import type { TerminalsSectionData } from '@interfaces/components';
+
+interface Props extends TerminalsSectionData {}
+
+const { eyebrow, title, description, items } = Astro.props;
+---
+
+<section class="bg-gray-50 py-16 lg:py-24">
+	<div class="max-w-container mx-auto w-[95%]">
+		<div class="mx-auto mb-12 max-w-3xl text-center md:mb-16 lg:mb-20">
+			<span class="text-primary text-lg font-bold tracking-wider">
+				{eyebrow}
+			</span>
+			<h2 class="mx-auto mt-2 text-3xl leading-tight font-bold text-gray-900 md:text-5xl">
+				{title}
+			</h2>
+			<p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-600">
+				{description}
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+			{items.map((item) => <TerminalCard {...item} />)}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,14 @@
+---
+import { TERMINALS_SEO } from '@data/seo';
+import { TERMINAL } from '@data/heroes';
+import { TERMINALS_PAGE_DATA } from '@data/terminals';
+
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import TerminalsGrid from '@components/TerminalsGrid.astro';
+---
+
+<Layout {...TERMINALS_SEO}>
+	<Hero {...TERMINAL} />
+	<TerminalsGrid {...TERMINALS_PAGE_DATA} />
+</Layout>

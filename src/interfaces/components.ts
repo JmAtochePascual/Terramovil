@@ -104,3 +104,19 @@ export interface ServiceComparisonData {
 	mainDescription: string;
 	services: ServiceDetailItem[];
 }
+
+export interface TerminalItem {
+	name: string;
+	address: string;
+	phone: string;
+	image: ImageMetadata;
+	iconAddress: ImageMetadata;
+	iconPhone: ImageMetadata;
+}
+
+export interface TerminalsSectionData {
+	eyebrow: string;
+	title: string;
+	description: string;
+	items: TerminalItem[];
+}
