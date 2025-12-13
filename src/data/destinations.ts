@@ -125,3 +125,11 @@ export const HOME_DESTINATIONS_SECTION: DestinationsSection = {
 	limit: 8,
 	showButton: true,
 };
+
+export const DESTINATIONS_DESTINATIONS_SECTION: DestinationsSection = {
+	eyebrow: 'Cobertura Nacional',
+	title: 'Unimos tus Destinos Principales',
+	description:
+		'Brindamos servicio de transporte terrestre conectando Lima con las principales ciudades del Norte y Centro del país. Garantizamos traslados puntuales y seguros hacia estos puntos de llegada.',
+	items: ALL_DESTINATIONS,
+};

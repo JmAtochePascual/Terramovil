@@ -1,0 +1,14 @@
+---
+import { DESTINATIONS_SEO } from '@data/seo';
+import { DESTINATIONS } from '@data/heroes';
+import { DESTINATIONS_DESTINATIONS_SECTION } from '@data/destinations';
+
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import Destinations from '@components/Destinations.astro';
+---
+
+<Layout {...DESTINATIONS_SEO}>
+	<Hero {...DESTINATIONS} />
+	<Destinations {...DESTINATIONS_DESTINATIONS_SECTION} />
+</Layout>
