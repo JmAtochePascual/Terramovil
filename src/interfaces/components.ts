@@ -92,3 +92,15 @@ export interface WhatsAppData {
 	label: string;
 	icon: ImageMetadata;
 }
+
+export interface ServiceDetailItem {
+	title: string;
+	description: string;
+}
+
+export interface ServiceComparisonData {
+	eyebrow: string;
+	title: string;
+	mainDescription: string;
+	services: ServiceDetailItem[];
+}

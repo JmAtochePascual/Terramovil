@@ -1,0 +1,29 @@
+---
+import { SERVICES_SEO } from '@data/seo';
+import { SERVICES } from '@data/heroes';
+import { SERVICES_COMPARISON_DATA } from '@data/services';
+import { SERVICES_ECOVIP_FEATURES, SERVICES_ECOTERRA_FEATURES } from '@data/features';
+import { SERVICES_CTA } from '@data/cta';
+
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import ServiceComparison from '@components/ServiceComparison.astro';
+import Features from '@components/FeatureGrid.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<Layout {...SERVICES_SEO}>
+	<Hero {...SERVICES} />
+
+	<ServiceComparison {...SERVICES_COMPARISON_DATA} />
+
+	<section class="py-8 md:py-12 lg:pt-20 lg:pb-32">
+		<Features {...SERVICES_ECOVIP_FEATURES} reversed={true} />
+	</section>
+
+	<CTASection {...SERVICES_CTA} />
+
+	<section class="py-8 md:py-12 lg:pt-20 lg:pb-32">
+		<Features {...SERVICES_ECOTERRA_FEATURES} reversed={true} />
+	</section>
+</Layout>
